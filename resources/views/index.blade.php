@@ -33,13 +33,7 @@
                         @csrf
                         @method('PUT')
                         <button type="submit" style="cursor: pointer">
-                            @if ($applicant->is_hired)
-                                <span>FIRE</span>
-
-                                @else
-                                    HIRE
-
-                                @endif
+                            {{$applicant->is_hired ? 'Fire' : 'Hire'}}
                         </button>
                     </form>
                 </td>
