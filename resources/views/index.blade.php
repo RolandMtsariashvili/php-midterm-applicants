@@ -19,7 +19,7 @@
                 <td>{{$applicant->name}}</td>
                 <td>{{$applicant->surname}}</td>
                 <td>{{$applicant->experience_years}}</td>
-                <td style="padding: 10px">{{$applicant->is_hired}}</td>
+                <td style="padding: 10px">{{$applicant->is_hired ? 'HIRED' : 'NOT HIRED'}}</td>
                 <td>
                     <a href="{{route('applicants.edit', $applicant->id)}}">Edit</a>
                     <form method="POST" action="{{route('applicants.delete', $applicant->id)}}">
@@ -33,7 +33,13 @@
                         @csrf
                         @method('PUT')
                         <button type="submit" style="cursor: pointer">
-                            HIRE
+                            @if ($applicant->is_hired)
+                                <span>FIRE</span>
+
+                                @else
+                                    HIRE
+
+                                @endif
                         </button>
                     </form>
                 </td>
